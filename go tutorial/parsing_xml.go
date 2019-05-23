@@ -3,6 +3,8 @@ package main
 import (
 	"encoding/xml"
 	"fmt"
+	"io/ioutil"
+	"os"
 	// "io/ioutil"
 	// "os"
 )
@@ -35,8 +37,10 @@ func (s Location) String() string {
 	return fmt.Sprintf("%s - %s", s.Loc, s.Des)
 }
 func main() {
-	// resp, _ := os.Open("note.xml")
-	// bytes, _ := ioutil.ReadAll(resp.Body)
+	resp, _ := os.Open("note.xml")
+	bytes, _ := ioutil.ReadAll(resp)
+
+	fmt.Println(string(bytes))
 	// resp.Close()
 	var s SitemapIndex
 	xml.Unmarshal(XML, &s.Locations)
